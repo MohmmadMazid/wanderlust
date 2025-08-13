@@ -32,11 +32,26 @@ const ExpressError = require("./utils/ExpresError.js");
 let { listingSchema, reviewSchema } = require("./schema.js"); //not working in this  file
 
 const session = require("express-session"); //session require
+const MongoStore = require("connect-mongo");
+
 const flash = require("connect-flash");
 //authentication
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+
+const mongoURL = process.env.ATLAS_MONGO_URL;
+const store = MongoStore.create({
+  mongoUrl: mongoURL,
+  crypto: {
+    secret: process.env.SESSION_SECRET,
+  },
+  touchAfter: 24 * 60 * 60,
+});
+
+store.on("error", () => {
+  console.log("error in mongo URL means MONGO_URL", error);
+});
 
 main()
   .then((res) => {
@@ -45,11 +60,14 @@ main()
   .catch((err) => {
     console.log(err);
   });
+
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
+  await mongoose.connect(mongoURL);
+  //   await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
 
 const sessionOptions = {
+  store: store,
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
