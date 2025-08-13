@@ -1,0 +1,120 @@
+<% layout("/layouts/boilerplate.ejs") %>
+        <style>
+          #filters{
+            display: flex;
+            flex-wrap: wrap;
+        
+          }
+          .filter{
+            text-align: center;
+            margin-right: 2rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+          }
+          .filter:hover{
+            opacity: 1;
+            cursor: pointer;
+          }
+          .filter p{
+            font-size: 0.8rem;
+          }
+        </style>
+        <!-- <h3>All Listing</h3> -->
+        <!-- <form action="/listing/new" method="get">
+            <button>create new list</button>
+        </form> -->
+        <div id="filters">
+            <div class="filter">
+              <div><i class="fa-solid fa-fire"></i></div>
+              <p>trending</p>
+            </div>
+
+            <div class="filter">
+              <div><i class="fa-solid fa-house-user"></i></div>
+              <p>Rooms</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-mountain-city"></i></i></div>
+              <p>iconic cities</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-mountain-sun"></i></div>
+              <p>Mountains</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-brands fa-fort-awesome"></i></div>
+              <p>Castels</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-person-swimming"></i></div>
+              <p>Amazing Pools</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-cow"></i></div>
+              <p>Farms</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-water"></i></div>
+              <p>Lake</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-snowflake"></i></div>
+              <p>Arctic</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-tower-observation"></i></div>
+              <p>Tower</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-car-side"></i></div>
+              <p>Transport</p>
+            </div> 
+             <div class="filter">
+              <div><i class="fa-solid fa-hotel"></i></div>
+              <p>Hotel</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-monument"></i></div>
+              <p>Monument</p>
+            </div>
+            <div class="filter">
+              <div><i class="fa-solid fa-taxi"></i></div>
+              <p>Taxi</p>
+            </div>
+            <!-- <div class="tax-toggle">
+              <div class="form-check-reverse form-switch ml-3">
+                <input class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label " for="flexSwitchCheckDefault">Display Taxes</label>
+              </div>
+            </div> -->
+            
+        </div>
+
+       <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <%  for(let list of allList){ %>
+            <a href="/listing/<%=list._id  %>" class="listing-link">
+            <div class="card col listing-card" >
+                <img src="<%= list.image.url  %>" class="card-img-top" alt="Listing" style="height: 20rem;">
+                <div class="card-img-overlay">abcd</div>
+                <div class="card-body">
+                  <p class="card-text">
+                  <b>  <%= list.title  %></b>
+                  <br>
+                  &#x20B9; <%= list.price.toLocaleString("en-IN")%>/night
+    
+                  </p>
+                </div>
+              </div></a>
+              <%  } %>
+    
+       </div>
+
+          <!-- previous code -->
+            <!-- <ul>
+                  
+                 <%#  for(let list of allList){ %>
+                    <li>
+                        <a href="/listing/<%# list._id  %>"><%# list.title  %></a>
+                    </li>
+                    <%#  } %>
+        </ul> -->
