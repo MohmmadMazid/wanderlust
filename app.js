@@ -11,8 +11,7 @@ const Review = require("./models/review.js");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
-// var methodOverride = require('method-override')
-// app.use(methodOverride('_method'))
+
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 const ejsMate = require("ejs-mate");
@@ -20,7 +19,8 @@ app.engine("ejs", ejsMate);
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
-
+// aos
+const aos = require("aos");
 let wrapAsync = require("./utils/wrapAsync.js"); //not working in this file
 app.use(express.static(path.join(__dirname, "/public")));
 const ExpressError = require("./utils/ExpresError.js");
@@ -58,8 +58,8 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(mongoURL);
-  //   await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
+  // await mongoose.connect(mongoURL);
+  await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
 
 const sessionOptions = {

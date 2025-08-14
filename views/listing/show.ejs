@@ -11,13 +11,18 @@
   <!-- Listing Card -->
   <div class="row mt-3">
     <div class="col-12 col-md-8 offset-md-2">
-      <div class="card listing-card">
+      <div
+        class="card listing-card"
+        data-aos="fade-right"
+        data-aos-duration="1000"
+      >
         <img
           src="<%= listing.image.url %>"
           class="card-img-top show-img img-fluid"
           alt="Listing image"
         />
         <div class="card-body">
+          <p class="card-text"><%= listing.owner.username %></p>
           <p class="card-text"><%= listing.description %></p>
           <p class="card-text">
             &#x20B9;<%= listing.price.toLocaleString("en-IN") %>
