@@ -1,10 +1,6 @@
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
-// console.log(process.env.CLOUDE_NAME)
-// console.log(process.env.CLOUDE_KEY)
-// console.log(process.env.CLOUDE_API_SECRET)
-
 const express = require("express");
 const app = express();
 const port = 3000;

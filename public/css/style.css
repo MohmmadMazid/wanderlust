@@ -127,9 +127,13 @@ color: #222222;
 
 /* //navarLing left  and right */
 
-.collapse{
+/* .collapse{
     width: 100% ;
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
+} */
+
+.collapse{
+    transition: all 0.5s;
 }
