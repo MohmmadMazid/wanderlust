@@ -37,13 +37,13 @@
   <!-- Action Buttons -->
   <div class="row mt-3">
     <div class="col-6 col-md-2 offset-md-2 mb-2">
-      <a href="/listing/<%= listing._id%>/edit" class="btn btn-dark w-100"
+      <a href="/listing/<%= listing._id%>/edit" class="btn btn-warning w-50"
         >Edit</a
       >
     </div>
     <div class="col-6 col-md-2 mb-2">
       <form action="/listing/<%= listing._id %>?_method=DELETE" method="POST">
-        <button class="btn btn-dark w-100">Delete</button>
+        <button class="btn btn-danger w-50">Delete</button>
       </form>
     </div>
   </div>
