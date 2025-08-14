@@ -3,7 +3,7 @@ if (process.env.NODE_ENV != "production") {
 }
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 let path = require("path");
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
@@ -58,8 +58,8 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(mongoURL);
-  // await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
+  // await mongoose.connect(mongoURL);
+  await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
 
 const sessionOptions = {
@@ -126,5 +126,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log("app is workig using port 3000");
+  console.log(`app is workig using port ${port}`);
 });
